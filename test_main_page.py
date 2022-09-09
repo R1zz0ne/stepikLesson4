@@ -9,6 +9,6 @@ def test_guest_can_go_to_login_page(browser):
     page.open()
     page.should_be_login_link()
     page.go_to_login_page()
-    loginpage = LoginPage(browser, link)
+    loginpage = LoginPage(browser, browser.current_url)
     loginpage.should_be_login_page()
     time.sleep(1)
