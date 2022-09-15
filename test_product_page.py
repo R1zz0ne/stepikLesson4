@@ -8,7 +8,6 @@ import pytest
 
 @pytest.mark.parametrize('id', ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"])
 @pytest.mark.xfail(reason="fixing this bug right now")
-@pytest.mark.skip
 def test_guest_can_add_product_to_basket(browser, id):
     link = "http://selenium1py.pythonanywhere.com/catalogue/" + \
             f"coders-at-work_207/?promo=offer{id}"
@@ -27,6 +26,7 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/" + \
             "coders-at-work_207/"
@@ -42,6 +42,7 @@ def test_guest_cant_see_success_message(browser):
     page.open()
     page.should_not_be_success_message()
 
+@pytest.mark.xfail
 def test_message_disappeared_after_adding_product_to_basket(browser):
     link = "http://selenium1py.pythonanywhere.com/catalogue/" + \
             "coders-at-work_207/"
