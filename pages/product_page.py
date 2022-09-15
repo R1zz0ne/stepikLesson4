@@ -2,10 +2,11 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 import math
 
+
 class ProductPage(BasePage):
     def add_product_in_basket(self):
         add_basket_btn = self.browser.find_element( \
-                            *ProductPageLocators.ADD_TO_BASKET_BTN)
+            *ProductPageLocators.ADD_TO_BASKET_BTN)
         add_basket_btn.click()
 
     def search_name_product(self):
@@ -13,17 +14,17 @@ class ProductPage(BasePage):
 
     def search_price_product(self):
         return self.browser.find_element( \
-                            *ProductPageLocators.PRODUCT_PRICE).text
+            *ProductPageLocators.PRODUCT_PRICE).text
 
     def check_the_name_of_the_product_added_to_the_cart(self, nameproduct):
         alert_name_product = self.browser.find_element( \
-                                        *ProductPageLocators.ALERT_NAME).text
+            *ProductPageLocators.ALERT_NAME).text
         assert alert_name_product == nameproduct, \
             "Product name does not match what was added to the cart"
 
     def check_the_price_of_the_product_added_to_the_cart(self, priceproduct):
         alert_price_product = self.browser.find_element( \
-                                        *ProductPageLocators.ALERT_PRICE).text
+            *ProductPageLocators.ALERT_PRICE).text
         assert alert_price_product == priceproduct, \
             "Price of the product does not match what was added to the cart"
 
