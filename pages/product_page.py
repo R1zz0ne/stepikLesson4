@@ -15,17 +15,17 @@ class ProductPage(BasePage):
         return self.browser.find_element( \
                             *ProductPageLocators.PRODUCT_PRICE).text
 
-    def check_name_product_alert_add_to_busket(self, nameproduct):
-        alertname = self.browser.find_element( \
+    def check_the_name_of_the_product_added_to_the_cart(self, nameproduct):
+        alert_name_product = self.browser.find_element( \
                                         *ProductPageLocators.ALERT_NAME).text
-        assert alertname == nameproduct, "Product name does not match what " + \
-                                            "was added to the cart"
+        assert alert_name_product == nameproduct, \
+            "Product name does not match what was added to the cart"
 
-    def check_price_product_alert_add_to_basket(self, priceproduct):
-        alertprice = self.browser.find_element( \
+    def check_the_price_of_the_product_added_to_the_cart(self, priceproduct):
+        alert_price_product = self.browser.find_element( \
                                         *ProductPageLocators.ALERT_PRICE).text
-        assert alertprice == priceproduct, "Price of the product does not " + \
-                                            "match what was added to the cart"
+        assert alert_price_product == priceproduct, \
+            "Price of the product does not match what was added to the cart"
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
@@ -33,13 +33,6 @@ class ProductPage(BasePage):
         answer = str(math.log(abs((12 * math.sin(float(x))))))
         alert.send_keys(answer)
         alert.accept()
-        # try:
-        #     alert = self.browser.switch_to.alert
-        #     alert_text = alert.text
-        #     print(f"Your code: {alert_text}")
-        #     alert.accept()
-        # except NoAlertPresentException:
-        #     print("No second alert presented")
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present( \
